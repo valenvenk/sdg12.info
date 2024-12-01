@@ -1,0 +1,135 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #42280e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-align:center
+}
+
+
+
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #341f13;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+a {
+    color: #42280e;
+    text-decoration: none;
+}
+
+nav ul {
+    background-color: #FAF9F6;
+    background-position: center;
+    width:100%;
+    margin: 0;
+    border-style: solid;
+    border-color: #555555;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+   
+}
+
+nav ul li {
+    list-style-type: none;
+     display: inline;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #787878;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #59b1c2
+}
+.game-container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.bins-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.bin {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.recycling {
+    background-color: #90EE90;
+}
+
+.compost {
+    background-color: #DEB887;
+}
+
+.trash {
+    background-color: #808080;
+}
+
+.waste-item {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #666;
+    border-radius: 5px;
+    cursor: move;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.score {
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+.waste-item:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.feedback {
+    color: #333;
+    font-size: 1.2em;
+    height: 20px;
+    margin: 10px 0;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #42280e;
+    color: white;
+    text-align:center;
+}
