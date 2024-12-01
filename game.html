@@ -1,77 +1,12 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Waste Sorting Game</title>
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>Waste Sorting Game</title>
-        <style>
-            .game-container {
-                max-width: 800px;
-                margin: 20px auto;
-                text-align: center;
-            }
-    
-            .bins-container {
-                display: flex;
-                justify-content: space-around;
-                margin: 30px 0;
-            }
-    
-            .bin {
-                width: 150px;
-                height: 150px;
-                border: 3px solid #333;
-                border-radius: 10px;
-                padding: 10px;
-                text-align: center;
-            }
-    
-            .recycling {
-                background-color: #90EE90;
-            }
-    
-            .compost {
-                background-color: #DEB887;
-            }
-    
-            .trash {
-                background-color: #808080;
-            }
-    
-            .waste-item {
-                padding: 10px;
-                margin: 10px;
-                background-color: #f0f0f0;
-                border: 2px solid #666;
-                border-radius: 5px;
-                cursor: move;
-                display: inline-block;
-                transition: all 0.3s ease;
-            }
-    
-            .score {
-                font-size: 1.5em;
-                margin: 20px;
-            }
-    
-            .waste-item:hover {
-                background-color: #e0e0e0;
-                transform: scale(1.05);
-            }
-    
-            .feedback {
-                color: #333;
-                font-size: 1.2em;
-                height: 20px;
-                margin: 10px 0;
-            }
-        </style>
-    </head>
 </head>
-</body>
-
+<body>
     <header>
         <nav>
             <ul>
@@ -81,93 +16,75 @@
         </nav>
         <h1 style="text-align: center; padding-top: 50px; padding-bottom: 50px;">Waste Sorting Game</h1>
     </header>
-    <main>
-        <h2 style="padding: 10px;">Instructions: </h2>
-        <p style="padding: 10px;">Drag each item into where you believe it should be disposed of.</p>
-            <div class="game-container">
-                <h1>Waste Sorting Game</h1>
-                <p>Sort the items into the correct bins!</p>
-                
-                <div class="score">Score: <span id="score">0</span></div>
-                <div class="feedback" id="feedback"></div>
+    <div class="content">
+    <div class="quiz-container">
+        <h1>Waste Sorting Quiz</h1>
         
-                <div class="bins-container">
-                    <div class="bin trash" data-bin="trash">
-                        <h3>Trash</h3>
-                    </div>
-                    <div class="bin recycling" data-bin="recycling">
-                        <h3>Recycling</h3>
-                    </div>
-                    <div class="bin compost" data-bin="compost">
-                        <h3>Compost</h3>
-                    </div>
-                </div>
-        
-                <div id="items">
-                    <div class="waste-item" draggable="true" data-type="recycling">Plastic Bottle</div>
-                    <div class="waste-item" draggable="true" data-type="trash">Food Wrapper</div>
-                    <div class="waste-item" draggable="true" data-type="recycling">Newspaper</div>
-                    <div class="waste-item" draggable="true" data-type="compost">Banana Peel</div>
-                    <div class="waste-item" draggable="true" data-type="recycling">Glass Jar</div>
-                    <div class="waste-item" draggable="true" data-type="compost">Coffee Grounds</div>
-                    <div class="waste-item" draggable="true" data-type="trash">Used Tissue</div>
-                    <div class="waste-item" draggable="true" data-type="compost">Apple Core</div>
-                    <div class="waste-item" draggable="true" data-type="recycling">Aluminum Can</div>
-                    <div class="waste-item" draggable="true" data-type="recycling">Cardboard Box</div>
-                </div>
-            </div>
-        
-            <script>
-                let score = 0;
-                const scoreElement = document.getElementById('score');
-                const items = document.querySelectorAll('.waste-item');
-                const bins = document.querySelectorAll('.bin');
-                const feedback = document.getElementById('feedback');
-        
-                items.forEach(item => {
-                    item.addEventListener('dragstart', e => {
-                        e.dataTransfer.setData('text/plain', item.dataset.type);
-                        item.style.opacity = '0.5';
-                    });
-        
-                    item.addEventListener('dragend', e => {
-                        item.style.opacity = '1';
-                    });
-                });
-        
-                bins.forEach(bin => {
-                    bin.addEventListener('dragover', e => {
-                        e.preventDefault();
-                        bin.style.borderStyle = 'dashed';
-                    });
-        
-                    bin.addEventListener('dragleave', e => {
-                        bin.style.borderStyle = 'solid';
-                    });
-        
-                    bin.addEventListener('drop', e => {
-                        e.preventDefault();
-                        bin.style.borderStyle = 'solid';
-                        const itemType = e.dataTransfer.getData('text/plain');
-                        const correctBin = bin.dataset.bin;
-                        const draggedItem = document.querySelector('.waste-item[style="opacity: 0.5;"]');
-                        
-                        if (itemType === correctBin) {
-                            score += 10;
-                        } else {
-                            score -= 5;
-                        }
-                        
-                        scoreElement.textContent = score;
-                        draggedItem.remove(); // Remove item regardless of correct/incorrect bin
-        
-                        // Check if game is over
-                        if (document.querySelectorAll('.waste-item').length === 0) {
-                            feedback.textContent = `Game Over! Final Score: ${score}`;
-                        }
-                    });
-                });
-            </script>
-            <footer>Author: Valen V.</footer>
-        </body>
-        </html>
+        <div class="instructions">
+            <h2>Instructions:</h2>
+            <p>For each item below, type either "trash", "recycling", or "compost" in the text box.</p>
+            <p>After answering all questions, click "Show Answers" to check your responses!</p>
+        </div>
+
+        <div class="item">
+            <h3>1. Plastic Bottle</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: recycling</div>
+        </div>
+
+        <div class="item">
+            <h3>2. Banana Peel</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: compost</div>
+        </div>
+
+        <div class="item">
+            <h3>3. Used Tissue</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: trash</div>
+        </div>
+
+        <div class="item">
+            <h3>4. Glass Jar</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: recycling</div>
+        </div>
+
+        <div class="item">
+            <h3>5. Coffee Grounds</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: compost</div>
+        </div>
+
+        <div class="item">
+            <h3>6. Food Wrapper</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: trash</div>
+        </div>
+
+        <div class="item">
+            <h3>7. Newspaper</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: recycling</div>
+        </div>
+
+        <div class="item">
+            <h3>8. Apple Core</h3>
+            <input type="text" placeholder="Enter your answer">
+            <div class="answer">Answer: compost</div>
+        </div>
+
+        <button class="show-answers-btn" onclick="showAnswers()">Show Answers</button>
+    </div>
+
+    <script>
+        function showAnswers() {
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.style.display = 'block';
+            });
+        }
+    </script>
+    </div>
+</body>
+</html>
